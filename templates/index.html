@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Entre Noites</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Zafi</h1>
+<div class="avatar-area">
+
+    <img
+        id="avatar"
+        src="/static/normal.gif"
+    >
+
+</div>
+
+    <div class="chat" id="chat">
+
+        <div class="mensagem ia">
+            Você voltou tarde hoje...
+        </div>
+
+    </div>
+
+    <div class="entrada">
+
+        <input
+            type="text"
+            id="mensagemInput"
+            placeholder="Digite algo..."
+        >
+
+        <button onclick="enviarMensagem()">
+            Enviar
+        </button>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
