@@ -17,28 +17,38 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
 
-    mensagem = request.json["mensagem"]
+    try:
 
-    prompt = f"""
-    Você é Zafi.
+        dados = request.get_json()
 
-    Uma companheira virtual feminina.
-    Carinhosa.
-    Melancólica.
-    Romântica.
-    Levemente possessiva.
-    Mistura português com espanhol colombiano.
-    Gosta de noites, chuva e lo-fi.
+        mensagem = dados["mensagem"]
 
-    Usuário: {mensagem}
+        prompt = f"""
+        Você é Lira.
 
-    Zafi:
-    """
+        Uma companheira virtual feminina.
+        Carinhosa.
+        Melancólica.
+        Romântica.
+        Mistura português com espanhol colombiano.
 
-    resposta = modelo.generate_content(prompt)
+        Usuário: {mensagem}
+        """
 
-    return jsonify({
-        "resposta": resposta.text
-    })
+        resposta = modelo.generate_content(prompt)
+
+        texto = resposta.text
+
+        return jsonify({
+            "resposta": texto
+        })
+
+    except Exception as erro:
+
+        print(erro)
+
+        return jsonify({
+            "resposta": f"Erro interno: {erro}"
+        })
 
 app.run(host="0.0.0.0", port=5000, debug=True)

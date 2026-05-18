@@ -44,7 +44,21 @@ async function enviarMensagem(){
 
     })
 
-    const dados = await resposta.json()
+    let dados
+
+try{
+
+    dados = await resposta.json()
+
+}catch(erro){
+
+    adicionarMensagem(
+        "Erro ao processar resposta da IA",
+        "ia"
+    )
+
+    return
+}
 
     adicionarMensagem(
         dados.resposta,
