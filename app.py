@@ -5,9 +5,8 @@ import google.generativeai as genai
 app = Flask(__name__)
 
 genai.configure(
-    api_key="GEMINI_API_KEY"
+    api_key=os.getenv("GEMINI_API_KEY")
 )
-
 modelo = genai.GenerativeModel("gemini-2.5-flash")
 
 @app.route("/")
@@ -24,7 +23,7 @@ def chat():
         mensagem = dados["mensagem"]
 
         prompt = f"""
-        Você é Lira.
+        Você é Zafi.
 
         Uma companheira virtual feminina.
         Carinhosa.
